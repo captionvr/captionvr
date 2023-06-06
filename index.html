@@ -12,7 +12,7 @@
 
     <meta content="Webflow" name="generator">
     <link rel="icon" type="image/x-icon" href="img/icon.png">
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="style_2.css" rel="stylesheet" type="text/css">
 
     <script src="script/scrolltop.js"> </script>
     <script src="script/jquery.min.js"></script>
@@ -23,25 +23,96 @@
 
 <body>
 
-    <div class="responsive" id="container">
-        <div class="gallery"><label for="toggle-1"> <img id="wiggle" src="img/img-1.png"> </label>
-
-            <div class="text">
-                <h1>Guide for Navigating the Virtual Realm</h1> <input id="toggle-1" type="checkbox">
-
-                <main>
-                    <br>
-                    <figure class="cycle-slideshow" data-cycle-timeout="0" data-cycle-fx="none" data-cycle-speed=50>
-                        <img class='cycle-next' src='img/book-spreads/vol1-1.png'>
-                        <img class='cycle-next' src='img/book-spreads/vol1-2.png'>
+    <div id="container">
+        <div><a onclick="replace('div1','div2')"> <img id="wiggle" src="img/img-1.png"> </a>
 
 
-                        <div class="cycle-caption"></div>
-                        <br>
-                    </figure>
-
-                </main>
+            <div id="div1" style="display:block" onclick="replace('div1','div2')">
+                <div class="text">
+                    <h1>Digitalization Documentation</h1>
+                </div>
             </div>
+        </div>
+    </div>
+    <div id="container2">
+
+        <div id="div2" style="display:none">
+
+          <div class="closebook"> <a onclick="replace('div2','div1')">close</a></div>  
+            
+            <div class="book" id="slideshow-container">
+
+                <div class="mySlides fade">
+                    <img src="img/book-spreads/vol1-1.png" style="width:100%">
+                </div>
+
+
+                <div class="mySlides fade">
+                    <img src="img/book-spreads/vol1-2.png" style="width:100%">
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="img/book-spreads/vol1-3.png" style="width:100%">
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="img/book-spreads/vol1-4.png" style="width:100%">
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="img/book-spreads/vol1-5.png" style="width:100%">
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="img/book-spreads/vol1-6.png" style="width:100%">
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="img/book-spreads/vol1-7.png" style="width:100%">
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="img/book-spreads/vol1-8.png" style="width:100%">
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="img/book-spreads/vol1-9.png" style="width:100%">
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="img/book-spreads/vol1-10.png" style="width:100%">
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="img/book-spreads/vol1-11.png" style="width:100%">
+                </div>
+                <div class="mySlides fade">
+                    <img src="img/book-spreads/vol1-12.png" style="width:100%">
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="img/book-spreads/vol1-13.png" style="width:100%">
+                </div>
+                <div class="mySlides fade">
+                    <img src="img/book-spreads/vol1-14.png" style="width:100%">
+                </div>
+
+
+                <div class="mySlides fade">
+                    <img src="img/book-spreads/vol1-4.gif" style="width:100%">
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="img/book-spreads/vol1-2.gif" style="width:100%">
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">←</a>
+                <a class="next" onclick="plusSlides(1)">→</a>
+
+            </div>
+
+
+
         </div>
     </div>
 
@@ -49,9 +120,44 @@
 
 
 
+    <script type="text/javascript">
+        function replace(hide, show) {
+            document.getElementById(hide).style.display = "none";
+            document.getElementById(show).style.display = "block";
+        }
+    </script>
 
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
 
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
 
-</body>
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
 
-</html>
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
+
+</body></html>
